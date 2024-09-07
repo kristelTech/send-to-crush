@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Proposal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7e9e3;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #e63946;
+        }
+
+        .gif {
+            width: 250px;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid #e63946;
+            background-color: transparent;
+            font-size: 1.5rem;
+            color: #e63946;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e63946;
+            color: white;
+        }
+
+        @keyframes move {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(200px, 0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .gif {
+                width: 200px;
+            }
+
+            .btn {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 id="question">Do you love me?</h1>
+        <img id="gif" src="https://media.giphy.com/media/l0ExdMHUDKteztyfe/giphy.gif" alt="Love Gif" class="gif">
+        <div class="buttons">
+            <button id="yesBtn" class="btn">Yes</button>
+            <button id="noBtn" class="btn">No</button>
+        </div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const question = document.getElementById('question');
+        const gif = document.getElementById('gif');
+
+      
+        noBtn.addEventListener('mouseenter', () => {
+            noBtn.style.position = 'absolute';
+            const randomX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+
+       
+        yesBtn.addEventListener('click', () => {
+            question.textContent = 'I love you too!';
+            gif.src = 'https://media4.giphy.com/media/YPUA7s6l6vZ7eMI7L3/giphy.webp?cid=790b7611v0jqhus5nb5tsgb10s8dpmdbzutufvusmrpi89cu&ep=v1_gifs_search&rid=giphy.webp&ct=g';
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+        });
+    </script>
+
+</body>
+
+</html>
